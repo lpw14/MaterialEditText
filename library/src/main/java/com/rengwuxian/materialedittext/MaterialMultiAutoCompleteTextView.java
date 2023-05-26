@@ -14,11 +14,11 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
  */
 public class MaterialMultiAutoCompleteTextView extends AppCompatMultiAutoCompleteTextView {
 
+  @Retention(RetentionPolicy.SOURCE)
   @IntDef({FLOATING_LABEL_NONE, FLOATING_LABEL_NORMAL, FLOATING_LABEL_HIGHLIGHT})
   public @interface FloatingLabelType {
   }

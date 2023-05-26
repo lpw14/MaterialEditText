@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-  buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+  compileSdkVersion 31
+  buildToolsVersion "31.0.0"
 
   defaultConfig {
-    minSdkVersion 7
-    targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    minSdkVersion 21
+    targetSdkVersion 31
   }
   buildTypes {
     release {
@@ -17,10 +17,21 @@ android {
 }
 
 dependencies {
-  compile 'com.android.support:support-annotations:22.2.0'
-  compile 'com.nineoldandroids:library:2.4.0'
-  compile 'com.android.support:appcompat-v7:22.2.0'
+  implementation 'androidx.annotation:annotation:1.5.0'
+  implementation 'com.nineoldandroids:library:2.4.0'
+  implementation 'androidx.appcompat:appcompat:1.4.2'
 }
 
+def buildNumber() {
+  return System.getenv("BUILD_NUMBER") as Integer ?: 0
+}
+
+ext {
+  publishGroupId = 'com.rengwuxian.materialedittext'
+  publishArtifactId = 'library'
+  publishVersion = "2.1.4.${buildNumber()}"
+}
+apply from: 'https://raw.githubusercontent.com/ZenMX/mavenPublisher/master/publish.gradle'
+
 // Used to push in maven
-apply from: '../maven_push.gradle'
+//apply from: '../maven_push.gradle'
